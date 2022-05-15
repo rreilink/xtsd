@@ -4,7 +4,7 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title ""
+Title "XTSD XT ISA SD card interface"
 Date ""
 Rev ""
 Comp ""
@@ -356,7 +356,7 @@ L power:GND #PWR0103
 U 1 1 62554CF5
 P 10300 3500
 F 0 "#PWR0103" H 10300 3250 50  0001 C CNN
-F 1 "GND" H 10305 3327 50  0000 C CNN
+F 1 "GND" H 10250 3350 50  0000 C CNN
 F 2 "" H 10300 3500 50  0001 C CNN
 F 3 "" H 10300 3500 50  0001 C CNN
 	1    10300 3500
@@ -1093,8 +1093,6 @@ Connection ~ 7600 2900
 Wire Wire Line
 	7600 2900 7600 3100
 Connection ~ 6500 2900
-Text Notes 2850 5900 0    50   ~ 0
-Check:\n-unused 4050 gates\n-shield pins SD card
 Wire Wire Line
 	3200 2100 3650 2100
 Wire Wire Line
@@ -1257,7 +1255,7 @@ U 1 1 62FB6638
 P 6000 6900
 F 0 "J4" H 6108 7081 50  0000 C CNN
 F 1 "Conn_01x02_Male" H 6108 6990 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Horizontal" H 6000 6900 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 6000 6900 50  0001 C CNN
 F 3 "~" H 6000 6900 50  0001 C CNN
 	1    6000 6900
 	1    0    0    -1  
@@ -1514,8 +1512,8 @@ $Comp
 L Memory_Flash:SST39SF010 U3
 U 1 1 6279998C
 P 10300 2300
-F 0 "U3" H 10300 3781 50  0000 C CNN
-F 1 "SST39SF010" H 10300 3690 50  0000 C CNN
+F 0 "U3" H 10500 1100 50  0000 C CNN
+F 1 "SST39SF010" H 10700 1000 50  0000 C CNN
 F 2 "Package_DIP:DIP-32_W15.24mm_Socket_LongPads" H 10300 2600 50  0001 C CNN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/25022B.pdf" H 10300 2600 50  0001 C CNN
 	1    10300 2300
@@ -1533,7 +1531,7 @@ F 3 "" H 9450 2800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 8800 3600 0    50   ~ 0
-PIN 29 = PIN 27 /WE for 28C64 / 28C256\nPIN 3 = PIN 1 = A14 for 28C256
+PIN 29 = PIN 27 /WE for 28C256\nPIN 3 = PIN 1 = A14 for 28C256
 Wire Wire Line
 	5450 2700 5300 2700
 Connection ~ 5300 2700
@@ -1548,7 +1546,7 @@ FL_A15
 Wire Wire Line
 	7700 2000 7200 2000
 Wire Bus Line
-	2950 800  7250 800 
+	2950 750  7250 750 
 $Comp
 L Jumper:SolderJumper_3_Open JP1
 U 1 1 633AF6C8
@@ -1560,9 +1558,9 @@ F 3 "~" H 9250 2500 50  0001 C CNN
 	1    9250 2500
 	0    -1   -1   0   
 $EndComp
-Connection ~ 7250 800 
+Connection ~ 7250 750 
 Text Notes 9200 2850 2    50   ~ 0
-28C64
+28C256
 Text Notes 9250 1950 2    50   ~ 0
 39F010
 Connection ~ 7500 2500
@@ -1654,7 +1652,7 @@ Wire Wire Line
 Text Label 8850 1750 0    50   ~ 0
 FL_A15
 Wire Bus Line
-	7250 800  9400 800 
+	7250 750  9400 750 
 Wire Wire Line
 	9450 2800 9700 2800
 $Comp
@@ -1907,20 +1905,6 @@ Wire Wire Line
 	3150 7550 2750 7550
 Wire Wire Line
 	2750 7250 3150 7250
-Wire Bus Line
-	7250 800  7250 1800
-Wire Bus Line
-	4800 3700 4800 5050
-Wire Bus Line
-	1250 4650 1250 5900
-Wire Bus Line
-	2700 650  2700 2000
-Wire Bus Line
-	9400 800  9400 2400
-Wire Bus Line
-	11100 650  11100 3700
-Wire Bus Line
-	2950 800  2950 4650
 Connection ~ 3950 7250
 Connection ~ 3150 7250
 Wire Wire Line
@@ -1931,4 +1915,18 @@ Wire Wire Line
 Connection ~ 3550 7250
 Wire Wire Line
 	3550 7250 3950 7250
+Wire Bus Line
+	7250 750  7250 1800
+Wire Bus Line
+	4800 3700 4800 5050
+Wire Bus Line
+	1250 4650 1250 5900
+Wire Bus Line
+	2700 650  2700 2000
+Wire Bus Line
+	9400 750  9400 2300
+Wire Bus Line
+	11100 650  11100 3700
+Wire Bus Line
+	2950 750  2950 4650
 $EndSCHEMATC
