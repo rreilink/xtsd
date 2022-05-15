@@ -1,0 +1,15 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP ATF22V10
+D generic 24-pin Programmable Array Logic (PAL) device
+K logic programmable PAL
+F ~
+$ENDCMP
+#
+$CMP SD_Card
+D SD Card Reader
+K connector SD
+F http://portal.fciconnect.com/Comergent//fci/drawing/10067847.pdf
+$ENDCMP
+#
+#End Doc Library

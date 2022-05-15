@@ -1,0 +1,5 @@
+(fp_lib_table
+  (lib (name ISA_Card_Edge_Connector_8bit)(type KiCad)(uri /Users/rob/Projecten/retropc/devel/xtsd/Kicad_Misc-master/Footprints/ISA_Card_Edge_Connector_8bit)(options "")(descr ""))
+  (lib (name PC_Bracket_ISA_Keystone_9202)(type KiCad)(uri /Users/rob/Projecten/retropc/devel/xtsd/Kicad_Misc-master/Footprints/PC_Bracket_ISA_Keystone_9202)(options "")(descr ""))
+  (lib (name Connector_SD)(type KiCad)(uri ${KIPRJMOD}/Connector_SD.pretty)(options "")(descr ""))
+)

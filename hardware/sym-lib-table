@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name Bus_ISA_8bit_AB_Rev0)(type Legacy)(uri /Users/rob/Projecten/retropc/devel/xtsd/Kicad_Misc-master/Symbols/Bus_ISA_8bit_AB/Bus_ISA_8bit_AB_Rev0.lib)(options "")(descr ""))
+  (lib (name xtsd)(type Legacy)(uri ${KIPRJMOD}/xtsd.lib)(options "")(descr ""))
+  (lib (name SD_connector)(type Legacy)(uri ${KIPRJMOD}/SD_connector.lib)(options "")(descr ""))
+)
