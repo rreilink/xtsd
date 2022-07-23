@@ -593,7 +593,7 @@ Wire Wire Line
 	5100 5500 4800 5500
 Text Label 4800 5500 0    50   ~ 0
 SDCLK
-Text Label 3400 4600 0    50   ~ 0
+Text Label 3350 4600 0    50   ~ 0
 SDCLK
 $Comp
 L power:GND #PWR0111
@@ -606,21 +606,6 @@ F 3 "" H 4100 5500 50  0001 C CNN
 	1    4100 5500
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:GND #PWR0112
-U 1 1 6270EEF5
-P 3600 5500
-F 0 "#PWR0112" H 3600 5250 50  0001 C CNN
-F 1 "GND" H 3605 5327 50  0000 C CNN
-F 2 "" H 3600 5500 50  0001 C CNN
-F 3 "" H 3600 5500 50  0001 C CNN
-	1    3600 5500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3600 5500 3600 4700
-Wire Wire Line
-	3600 4700 3700 4700
 Text Label 4950 4400 0    50   ~ 0
 D0
 Text Label 4950 4500 0    50   ~ 0
@@ -774,12 +759,12 @@ $EndComp
 $Comp
 L power:VCC #PWR0118
 U 1 1 62BCA5EB
-P 4100 4200
-F 0 "#PWR0118" H 4100 4050 50  0001 C CNN
-F 1 "VCC" H 4115 4373 50  0000 C CNN
-F 2 "" H 4100 4200 50  0001 C CNN
-F 3 "" H 4100 4200 50  0001 C CNN
-	1    4100 4200
+P 3650 4200
+F 0 "#PWR0118" H 3650 4050 50  0001 C CNN
+F 1 "VCC" H 3665 4373 50  0000 C CNN
+F 2 "" H 3650 4200 50  0001 C CNN
+F 3 "" H 3650 4200 50  0001 C CNN
+	1    3650 4200
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -958,12 +943,8 @@ Wire Wire Line
 Wire Wire Line
 	8350 4650 8250 4650
 Connection ~ 8250 4650
-Wire Wire Line
-	3700 4400 3400 4400
-Text Label 3400 4400 0    50   ~ 0
+Text Label 3350 4400 0    50   ~ 0
 MISO
-Wire Wire Line
-	3400 4600 3700 4600
 Wire Wire Line
 	8350 4750 7850 4750
 Wire Wire Line
@@ -1247,17 +1228,6 @@ F 1 "470" H 6270 6455 50  0000 L CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal" V 6130 6500 50  0001 C CNN
 F 3 "~" H 6200 6500 50  0001 C CNN
 	1    6200 6500
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x02_Male J4
-U 1 1 62FB6638
-P 6000 6900
-F 0 "J4" H 6108 7081 50  0000 C CNN
-F 1 "Conn_01x02_Male" H 6108 6990 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 6000 6900 50  0001 C CNN
-F 3 "~" H 6000 6900 50  0001 C CNN
-	1    6000 6900
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1915,6 +1885,28 @@ Wire Wire Line
 Connection ~ 3550 7250
 Wire Wire Line
 	3550 7250 3950 7250
+$Comp
+L Connector:Conn_01x02_Male J4
+U 1 1 62FB6638
+P 6000 6900
+F 0 "J4" H 6108 7081 50  0000 C CNN
+F 1 "Conn_01x02_Male" H 6108 6990 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Horizontal" H 6000 6900 50  0001 C CNN
+F 3 "~" H 6000 6900 50  0001 C CNN
+	1    6000 6900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3700 4700 3650 4700
+Wire Wire Line
+	3650 4700 3650 4200
+Wire Wire Line
+	4100 4200 3650 4200
+Connection ~ 3650 4200
+Wire Wire Line
+	3350 4600 3700 4600
+Wire Wire Line
+	3350 4400 3700 4400
 Wire Bus Line
 	7250 750  7250 1800
 Wire Bus Line
