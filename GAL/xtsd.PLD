@@ -1,0 +1,104 @@
+Name      xtsd;
+Partno    CA0018;
+Date      12/19/99;
+Revision  02;
+Designer  Rob;
+Company   Probe;
+Assembly  None;
+Location  None;
+Device    p22v10;
+
+/*
+ * Address   write                         read
+ *    0      transfer 8 bits               read received data, start new transfer (8 bits, 0xff)
+ *    1      write cs reg                  read received data, no new transfer
+ *    2      load ser reg, no clock pulse  read received data, no new transfer
+ *    3      generate 1 clock pulse        read received data, no new transfer
+ *
+ * How to use for different transfer modes:
+ * 
+ * chip select:
+ *   write 0 to address 1 to deselect both cards
+ *   write 1 to address 1 to select card 1
+ *   write 2 to address 1 to select card 2
+ *   do not write 3 to address 1, this would select both cards simultaneously
+ *
+ * send bytes, ignore output
+ *   write bytes to address 0
+ *
+ * send 0xff, read received data
+ *   read dummy byte to start the first transfer
+ *   read bytes from address 0.
+ *   last read will initiate another transmission of 0xff. If this is not desired, read last byte from address 1, 2 or 3
+ *
+ * send byte, read received data
+ *   write data to be sent to address 0
+ *   read received data from address 1, 2 or 3
+ *
+ * transfer at low speed (clocked per bit)
+ *
+ *   write data to be sent to address 2 (this step may be skipped if 0xff is to be sent)
+ *   8x: write (non't care value) to address 3
+ *   read received data from address 1, 2 or 3
+ */
+
+/**  Inputs  **/
+
+Pin 1 = clk;
+Pin 2 = !cs;
+
+Pin 4 = a0;
+Pin 5 = a1;
+Pin 6 = !ior;
+Pin 7 = !iow;
+
+
+Pin 10 = d0;
+Pin 11 = d1;
+Pin 13 = reset;
+
+field ctr = [C2..0];
+
+
+Pin 14 = !sdcs2;
+Pin 15 = !sdcs1;
+Pin 16 = access_prev; /* also des_rclk */
+Pin 17 = !des_oe;
+Pin 18 = !ser_load;
+Pin 19 = sdclk;  /* also ser_clk and des_clk */
+Pin 20 = clkena;
+Pin [21..23] = [C2..0];
+
+access = cs & (ior # iow);
+access_prev.d = access;
+
+start_8bit = access & !access_prev & !a1 & !a0;   /* write to or read from address 0 starts 8 bit transfer */
+
+count = start_8bit # C0 # C1 # C2;
+C0.d = C0 $ count;
+C1.d = C1 $ (count & C0);
+C2.d = C2 $ (count & C0 & C1);
+
+/* clkena is one clock delayed to allow loading of new data into serializer latch and received data into deserializer latch */
+clkena.d = count;
+
+single_clk = cs & iow & a0 & a1; /* write to address 3 generates clock pulse for the duration of the access */
+
+sdclk = (!clk & clkena) # single_clk; 
+
+ser_load = cs & iow & !a0 & !access_prev; /* write to address 0 or 2, before first clock */
+
+des_oe = cs & ior;
+
+sdcswrite = cs & iow & a0 & !a1;
+
+sdcs1 = ((sdcs1 & !sdcswrite) # (sdcswrite & d0)) & !reset;
+sdcs2 = ((sdcs2 & !sdcswrite) # (sdcswrite & d1)) & !reset;
+
+clkena.ar = 'b'0;
+clkena.sp = 'b'0;
+
+access_prev.ar = 'b'0;
+access_prev.sp = 'b'0;
+ctr.ar = 'h'00;
+ctr.sp = 'h'00;
